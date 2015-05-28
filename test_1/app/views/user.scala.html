@@ -1,13 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
+@(message: String)
+
+@main("Login") {
+	@message
+	
+	
 	<form action="">
+		<div>User name</div>
+		<input>
+		<div>Password</div>
 		<input>
 		<button>Login</button>
 	</form>
-</body>
-</html>
+}
