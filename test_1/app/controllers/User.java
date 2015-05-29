@@ -14,6 +14,9 @@ public class User extends Controller{
 		return ok(user.render("Welcome to Login"));
 		
 	}
+	public static Result reg() {
+		return ok(register.render());
+	}
 
 	
 
