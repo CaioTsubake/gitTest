@@ -2,8 +2,9 @@
  * 
  */
 
-$(document).ready(function() {
-	console.log("test");
-	alert("bar");
-	$('#print').click(alert("ipsen"));
+$("document").ready(function() {
+	
+	$('.print').click(function () {
+		alert("ipsen");
+	});
 })
