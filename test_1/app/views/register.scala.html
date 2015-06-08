@@ -10,13 +10,13 @@
 </head>
 <body>
 	<div class="container">
-		<form action="">
+		<form action="@routes.User.addUser()" method="post">
 			<div>Username</div>
-			<input type="text"/>
+			<input type="text" name="username"/>
 			<div>Password</div>
-			<input type="password"/>
+			<input type="password" name="password" />
 			<div>Repeat password</div>
-			<input type="password"/>
+			<input type="password" name="repeatPassword" />
 			<button class="btn btn-primary">Submit</button>
 		</form>
 	</div>
