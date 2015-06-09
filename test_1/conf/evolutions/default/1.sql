@@ -7,7 +7,7 @@ create table user_model (
   id                        varchar(255) not null,
   username                  varchar(255),
   password                  varchar(255),
-  repeat_pasword            varchar(255),
+  repeat_password           varchar(255),
   constraint pk_user_model primary key (id))
 ;
 
