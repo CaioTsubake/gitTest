@@ -1,11 +1,7 @@
 package controllers;
 
 
-import java.io.Console;
 import java.util.List;
-
-import com.avaje.ebean.Ebean;
-
 import models.UserModel;
 import play.data.Form;
 import play.db.ebean.Model;
@@ -24,22 +20,12 @@ public class User extends Controller{
 		return ok(register.render());
 	}
 
-	public static Result login() {
-		String name = "Francis";
-		UserModel user = Ebean.find(UserModel.class)
-				.where()
-					.eq("username", name)
-				.findUnique();
-		System.out.println(user);
-		return TODO;
-	}
-	
 	public static Result addUser() {
 		UserModel user = Form.form(UserModel.class).bindFromRequest().get();
 		user.save();
 		System.out.print("caio");
 		System.out.print(user);
-		
+		//return ok();
 		return redirect(routes.User.reg());
 	}
 	
