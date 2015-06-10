@@ -5,14 +5,13 @@
 	
 	<script type="text/javascript" src='@routes.Assets.at("js/user.js")'></script>
 	
-	<form action="">
+	<form action="@routes.User.login()" method="get">
 		<div>User name</div>
-		<input>
+		<input type="text" name="username">
 		<div>Password</div>
-		<input>
+		<input type="password" name="password">
 		<button>Login</button>
 	</form>
-	<button class="print">Print out</button>
 	<br/>
 	<a href=@routes.Application.index>Back</a>
 }

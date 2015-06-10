@@ -9,6 +9,7 @@ GET		/register					controllers.User.reg()
 
 POST	/user						controllers.User.addUser()
 GET		/users						controllers.User.getUsers()
+GET		/tank						controllers.User.login()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
