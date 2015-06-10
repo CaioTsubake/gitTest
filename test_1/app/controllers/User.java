@@ -34,20 +34,26 @@ public class User extends Controller{
 					.eq("username", formUser.username)
 				.findUnique();
 		
-		
+		// If there is a user with that username on the database.
 		if(user != null){
+			// Check if the password is the correct one
 			if(formUser.password.equals(user.password)){
 				return redirect(routes.Application.index());
 			}
 		}
-		
+		// An error occured while trying to log in.
 		return redirect(routes.User.index());
 	}
 	
 	public static Result addUser() {
 		UserModel user = Form.form(UserModel.class).bindFromRequest().get();
+		// If the password don't match the repeated one.
+		if(!user.password.equals(user.repeatPassword)){
+			return redirect(routes.User.reg());
+		}
+		// Saves the user on the database and sends to the login page.
 		user.save();
-		return redirect(routes.User.reg());
+		return redirect(routes.User.login());
 	}
 	
 	public static Result getUsers() {
