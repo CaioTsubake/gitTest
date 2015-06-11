@@ -38,7 +38,8 @@ public class User extends Controller{
 		if(user != null){
 			// Check if the password is the correct one
 			if(formUser.password.equals(user.password)){
-				return redirect(routes.Application.index());
+				session("signed",user.username);
+				return redirect(routes.User.show(user.id));
 			}
 		}
 		// An error occurred while trying to log in.
@@ -61,13 +62,20 @@ public class User extends Controller{
 		return ok(toJson(users));		
 	}
 	
-	public static Result show(int id){
-		UserModel thisUser = Ebean.find(UserModel.class)
-				.where()
-					.eq("id",id)
-				.findUnique();
+	public static Result show(String id){
+		String session = session("signed");
 		
-		return ok(user.render("This is your user page"));
+		if(session != null){
+			UserModel thisUser = Ebean.find(UserModel.class)
+					.where()
+						.eq("id",id)
+					.findUnique();
+			
+			return ok(user.render("This is your user page"));
+		}
+		else {
+			return unauthorized();
+		}
 	}
 	
 
