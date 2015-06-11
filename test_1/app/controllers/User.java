@@ -62,7 +62,7 @@ public class User extends Controller{
 	}
 	
 	public static Result show(int id){
-		UserModel user = Ebean.find(UserModel.class)
+		UserModel thisUser = Ebean.find(UserModel.class)
 				.where()
 					.eq("id",id)
 				.findUnique();

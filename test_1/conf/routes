@@ -4,7 +4,8 @@
 
 GET     /                           controllers.Application.index()
 GET		/fus						controllers.Application.index()
-GET		/user						controllers.User.index()
+
+GET		/signIn							controllers.User.index()
 GET		/register					controllers.User.reg()
 
 POST	/user						controllers.User.addUser()
