@@ -18,7 +18,7 @@ import static play.libs.Json.*;
 public class User extends Controller{
 	
 	public static Result index() {
-		return ok(user.render("Welcome to Login"));
+		return ok(login.render("Welcome to Login"));
 		
 	}
 	public static Result reg() {
@@ -41,7 +41,7 @@ public class User extends Controller{
 				return redirect(routes.Application.index());
 			}
 		}
-		// An error occured while trying to log in.
+		// An error occurred while trying to log in.
 		return redirect(routes.User.index());
 	}
 	
@@ -60,5 +60,15 @@ public class User extends Controller{
 		List<UserModel> users = new Model.Finder(String.class, UserModel.class).all();
 		return ok(toJson(users));		
 	}
+	
+	public static Result show(int id){
+		UserModel user = Ebean.find(UserModel.class)
+				.where()
+					.eq("id",id)
+				.findUnique();
+		
+		return ok(user.render("This is your user page"));
+	}
+	
 
 }
