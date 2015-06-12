@@ -74,7 +74,7 @@ public class User extends Controller{
 			return ok(user.render("This is your user page"));
 		}
 		else {
-			return unauthorized();
+			return unauthorized("You have to be signed in to see this page.");
 		}
 	}
 	
