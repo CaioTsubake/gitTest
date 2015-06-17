@@ -39,6 +39,7 @@ public class User extends Controller{
 			// Check if the password is the correct one
 			if(formUser.password.equals(user.password)){
 				session("signed",user.username);
+				Application.loggedUser = user;
 				return redirect(routes.User.show(user.id));
 			}
 		}
@@ -78,5 +79,6 @@ public class User extends Controller{
 		}
 	}
 	
-
+	
+	
 }

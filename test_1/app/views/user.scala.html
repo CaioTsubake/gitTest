@@ -6,12 +6,11 @@
 	
 	<h3>Post a comment</h3>
 	
-	<form>
+	<form action="@routes.Application.postComment()" method="post">
 		<label for="comment" class=required>Your comment</label>
-		 <textarea rows="2"></textarea>
+		 <textarea rows="2" name="content"></textarea>
 		 <br/>
 		 <button class="btn btn-primary">Comment</button>
-		 
 	</form>
 	
 }

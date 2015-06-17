@@ -5,6 +5,9 @@
 GET     /                           controllers.Application.index()
 GET		/logOut						controllers.Application.logout()
 
+POST	/postComment				controllers.Application.postComment()
+GET		/comments					controllers.Application.getComments()
+
 GET		/signIn						controllers.User.index()
 GET		/register					controllers.User.reg()
 
