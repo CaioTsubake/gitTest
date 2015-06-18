@@ -14,12 +14,15 @@
     </style>
 </head>
 <body>
-<!-- <script type="text/javascript">
+<script type="text/javascript">
 $("document").ready(function() {    	
-	var sign = document.cookie;
-	console.log(sign);
+	$(".logOut").css("display","none");
+	
+	if(!@session.isEmpty()){
+		$(".logOut").css("display","block");
+	}
 })
-</script> -->
+</script>
     <div class="navbar navbar-fixed-top">
         <div class="navbar-inner">
             <div class="container-fluid">

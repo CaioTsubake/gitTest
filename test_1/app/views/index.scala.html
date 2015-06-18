@@ -8,7 +8,17 @@
     
     <a href="@routes.User.reg">Register</a>
     <a href="@routes.User.index">Log In</a>
-    
+    <script type="text/javascript">
+		$(document).ready(function(){
+			
+			$(".userpage").css("display","none");
+			if(!@session.isEmpty()){
+				$(".userpage").css("display","block");
+			}
+		})
+			
+		
+	</script>
     <div class=userpage>
     	<a href="@routes.Application.relay">My Userpage</a>
     </div>
