@@ -62,7 +62,7 @@ public class Application extends Controller {
     
     public static Result getComments(){
 		@SuppressWarnings("unchecked")
-		List<CommentModel> comments = new Model.Finder(String.class, CommentModel.class).all();
+		List<CommentModel> comments = Ebean.find(CommentModel.class).findList();
 		return ok(toJson(comments));	
     }
     

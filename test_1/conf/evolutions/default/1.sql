@@ -5,6 +5,7 @@
 
 create table comment_model (
   id                        varchar(255) not null,
+  author_id                 varchar(255),
   posted_at                 timestamp,
   content                   varchar(255),
   constraint pk_comment_model primary key (id))
@@ -22,6 +23,8 @@ create sequence comment_model_seq;
 
 create sequence user_model_seq;
 
+alter table comment_model add constraint fk_comment_model_author_1 foreign key (author_id) references user_model (id) on delete restrict on update restrict;
+create index ix_comment_model_author_1 on comment_model (author_id);
 
 
 

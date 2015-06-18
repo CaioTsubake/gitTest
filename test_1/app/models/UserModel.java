@@ -1,6 +1,10 @@
 package models;
 
+import java.util.List;
+
 import javax.persistence.*;
+
+import org.springframework.beans.factory.annotation.Required;
 
 import play.db.*;
 import play.db.ebean.Model;
@@ -17,4 +21,6 @@ public class UserModel extends Model  {
 	public String password;
 	
 	public String repeatPassword;
+	
+	public List<CommentModel> userComments;
 }
