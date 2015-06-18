@@ -6,6 +6,8 @@ import static play.libs.Json.toJson;
 import java.util.Date;
 import java.util.List;
 
+import com.avaje.ebean.Ebean;
+
 import models.CommentModel;
 import models.UserModel;
 import play.Logger;
@@ -24,6 +26,7 @@ public class Application extends Controller {
 	}
 	
     public static Result index() {
+    	testUser();
         return ok(views.html.index.render("Booksearch"));
     }
     
@@ -36,21 +39,41 @@ public class Application extends Controller {
     public static Result postComment(){
     	
 		CommentModel comment = Form.form(CommentModel.class).bindFromRequest().get();
-		comment.author = Application.loggedUser;
-		Logger.info(ACCEPT);
-		Logger.info(loggedUser.username);
+		Logger.info("Logged user at posting",session("signedId"));
 		comment.postedAt = new Date();
+	
+
+		String id = session("signedId");
+		
+		UserModel savedUser = Ebean.find(UserModel.class)
+				.where()
+					.eq("id",id)
+				.findUnique();
+		comment.author = savedUser;
+		
+		Logger.debug("Comment before posting " + comment.toString());
 		
 		if(!comment.content.isEmpty()){
 			comment.save();
-//			return redirect(routes.User.show(loggedUser.id));
-			return ok();
+			return redirect(routes.User.show(id));
 		}
 		return null;
 	}
     
     public static Result getComments(){
+		@SuppressWarnings("unchecked")
 		List<CommentModel> comments = new Model.Finder(String.class, CommentModel.class).all();
 		return ok(toJson(comments));	
+    }
+    
+    public static void testUser(){
+    	if(loggedUser == null){
+    		Logger.debug("user is null");
+    		Logger.debug(session().toString());
+    	}
+    	
+    	else{
+    		Logger.debug(loggedUser.toString());
+    	}
     }
 }

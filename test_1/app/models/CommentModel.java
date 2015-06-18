@@ -16,7 +16,7 @@ public class CommentModel extends Model {
 
 	@Id
 	public String id;
-	
+	@OneToMany
 	public UserModel author;
 	
 	public Date postedAt;

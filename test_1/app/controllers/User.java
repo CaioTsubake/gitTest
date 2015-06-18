@@ -39,8 +39,9 @@ public class User extends Controller{
 			// Check if the password is the correct one
 			if(formUser.password.equals(user.password)){
 				session("signed",user.username);
+				session("signedId",user.id);
 				Application.loggedUser = user;
-				return redirect(routes.User.show(user.id));
+								return redirect(routes.User.show(user.id));
 			}
 		}
 		// An error occurred while trying to log in.
