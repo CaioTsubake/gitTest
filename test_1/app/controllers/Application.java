@@ -66,6 +66,11 @@ public class Application extends Controller {
 		return ok(toJson(comments));	
     }
     
+    public static Result relay(){
+    	String thisId = session("signedId");
+    	return redirect(routes.User.show(thisId));
+    }
+    
     public static void testUser(){
     	if(loggedUser == null){
     		Logger.debug("user is null");
