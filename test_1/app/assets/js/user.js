@@ -2,9 +2,20 @@
  * 
  */
 
-$("document").ready(function() {
+$(document).ready(function() {
 	
-	$('.print').click(function () {
-		alert("ipsen");
-	});
+	console.log("JS start");
+	
+	getComments();
+	
+	function getComments () {
+		$.get("/comments", function(results) {
+			$.each(results, function(index, result){
+				console.log(result);
+				$(".commentsList").append("<li>"+ result.author.username + " posted:" + "<br/>"
+											+ result.content +"</li>");
+			})
+		})
+	}
+	
 })

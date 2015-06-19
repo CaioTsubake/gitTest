@@ -5,6 +5,9 @@ import java.util.Date;
 
 import javax.persistence.*;
 
+import org.jboss.logging.FormatWith;
+import org.joda.convert.FromString;
+
 import play.db.ebean.Model;
 
 @Entity
@@ -18,6 +21,7 @@ public class CommentModel extends Model {
 	public String id;
 	@ManyToOne
 	public UserModel author;
+	
 	
 	public Date postedAt;
 	

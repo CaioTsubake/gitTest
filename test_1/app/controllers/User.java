@@ -28,7 +28,6 @@ public class User extends Controller{
 	public static Result login() {
 		UserModel formUser = Form.form(UserModel.class).bindFromRequest().get();
 		
-		
 		UserModel user = Ebean.find(UserModel.class)
 				.where()
 					.eq("username", formUser.username)
@@ -60,7 +59,7 @@ public class User extends Controller{
 	}
 	
 	public static Result getUsers() {
-		List<UserModel> users = new Model.Finder(String.class, UserModel.class).all();
+		List<UserModel> users = Ebean.find(UserModel.class).findList();
 		return ok(toJson(users));		
 	}
 	

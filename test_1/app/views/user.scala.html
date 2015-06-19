@@ -1,8 +1,11 @@
 @(message: String)
 
 @main(message) {
+	<script type="text/javascript" src='@routes.Assets.at("js/user.js")'></script>	
 	
-	<div id=comment></div>
+	<div id=comments>
+		<ul class=commentsList></ul>
+	</div>
 	
 	<h3>Post a comment</h3>
 	
