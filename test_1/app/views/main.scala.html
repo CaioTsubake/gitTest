@@ -5,15 +5,73 @@
 <head>
     <title>@title</title>
     <link rel='shortcut icon' type='image/png' href='@routes.Assets.at("images/favicon.png")'>
-    <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.css"))'>
+    <link href="https://dl.dropboxusercontent.com/u/97264231/startbootstrap-simple-sidebar-1.0.4/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://dl.dropboxusercontent.com/u/97264231/startbootstrap-simple-sidebar-1.0.4/css/simple-sidebar.css" rel="stylesheet">
     <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery.min.js"))'></script>
-    <style>
-    body {
-        margin-top: 50px;
-    }
-    </style>
 </head>
 <body>
+
+<div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        Projeto TCC
+                    </a>
+                </li>
+                <li>
+                    <a id="titleLink" class="brand" href="/">@title</a>
+                </li>
+                <li>
+                	<a class="logOut" href="/logOut">Sign out</a>
+                </li>
+				<li>
+					<a href="/register">Registro</a>
+                </li>
+                <li>
+                	<a href="/signIn">Log In</a>
+                </li>
+                <li>
+                	<a href="/userpage">Userpage</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+						<div class="container">
+							@content
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Menu Toggle Script -->
+    
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
 <script type="text/javascript">
 $("document").ready(function() {    	
 	$(".logOut").css("display","none");
@@ -23,16 +81,5 @@ $("document").ready(function() {
 	}
 })
 </script>
-    <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container-fluid">
-                <a id="titleLink" class="brand" href="/">@title</a>
-                <a class="logOut" href="/logOut">Sign out</a>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        @content
-    </div>
 </body>
 </html>
