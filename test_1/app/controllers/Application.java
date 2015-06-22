@@ -26,7 +26,6 @@ public class Application extends Controller {
 	}
 	
     public static Result index() {
-    	testUser();
         return ok(views.html.index.render("Booksearch"));
     }
     
@@ -39,7 +38,6 @@ public class Application extends Controller {
     public static Result postComment(){
     	
 		CommentModel comment = Form.form(CommentModel.class).bindFromRequest().get();
-		Logger.info("Logged user at posting",session("signedId"));
 		comment.postedAt = new Date();
 	
 
@@ -51,8 +49,6 @@ public class Application extends Controller {
 				.findUnique();
 		comment.author = savedUser;
 		
-		Logger.debug("Comment before posting " + comment.toString());
-		
 		if(!comment.content.isEmpty()){
 			comment.save();
 			return redirect(routes.User.show(id));
@@ -62,13 +58,22 @@ public class Application extends Controller {
     
     public static Result getComments(){
 		@SuppressWarnings("unchecked")
-		List<CommentModel> comments = Ebean.find(CommentModel.class).findList();
+		String userId = session("signedId");
+		List<CommentModel> comments = Ebean.find(CommentModel.class)
+			.where()
+			.eq("author.id",userId)
+		.findList();
+//		List<CommentModel> comments = Ebean.find(CommentModel.class).findList();
 		return ok(toJson(comments));	
     }
     
     public static Result relay(){
     	String thisId = session("signedId");
     	return redirect(routes.User.show(thisId));
+    }
+    
+    public static Result usersList(){
+    	return ok(views.html.userListing.render());
     }
     
     public static void testUser(){
