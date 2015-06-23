@@ -8,6 +8,15 @@
     <link href="https://dl.dropboxusercontent.com/u/97264231/startbootstrap-simple-sidebar-1.0.4/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://dl.dropboxusercontent.com/u/97264231/startbootstrap-simple-sidebar-1.0.4/css/simple-sidebar.css" rel="stylesheet">
     <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery.min.js"))'></script>
+    <script type="text/javascript">
+    $("document").ready(function() {    	
+    	$(".showLogged").css("display","none");
+    	
+    	if(!@session.isEmpty()){
+    		$(".showLogged").css("display","block");
+    	}
+    })
+    </script>
 </head>
 <body>
 
@@ -25,19 +34,19 @@
                     <a id="titleLink" class="brand" href="/">@title</a>
                 </li>
                 <li>
-                	<a class="logOut" href="/logOut">Sign out</a>
+                	<a class="logOut showLogged" href="/logOut">Sign out</a>
                 </li>
 				<li>
-					<a href="/register">Registro</a>
+					<a href="/register">Register</a>
                 </li>
                 <li>
                 	<a href="/signIn">Log In</a>
                 </li>
                 <li>
-                	<a href="/userpage">Userpage</a>
+                	<a class="showLogged" href="/userpage">Userpage</a>
                 </li>
                 <li>
-                	<a href=/usersList>Other users</a>
+                	<a class="showLogged" href=/usersList >Other users</a>
                 </li>
             </ul>
         </div>
@@ -75,14 +84,6 @@
     });
     </script>
 
-<script type="text/javascript">
-$("document").ready(function() {    	
-	$(".logOut").css("display","none");
-	
-	if(!@session.isEmpty()){
-		$(".logOut").css("display","block");
-	}
-})
-</script>
+
 </body>
 </html>
