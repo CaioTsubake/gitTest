@@ -3,6 +3,13 @@
 
 # --- !Ups
 
+create table book_model (
+  id                        varchar(255) not null,
+  title                     varchar(255),
+  isbn                      varchar(255),
+  constraint pk_book_model primary key (id))
+;
+
 create table comment_model (
   id                        varchar(255) not null,
   author_id                 varchar(255),
@@ -19,6 +26,8 @@ create table user_model (
   constraint pk_user_model primary key (id))
 ;
 
+create sequence book_model_seq;
+
 create sequence comment_model_seq;
 
 create sequence user_model_seq;
@@ -32,11 +41,15 @@ create index ix_comment_model_author_1 on comment_model (author_id);
 
 SET REFERENTIAL_INTEGRITY FALSE;
 
+drop table if exists book_model;
+
 drop table if exists comment_model;
 
 drop table if exists user_model;
 
 SET REFERENTIAL_INTEGRITY TRUE;
+
+drop sequence if exists book_model_seq;
 
 drop sequence if exists comment_model_seq;
 

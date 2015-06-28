@@ -71,8 +71,15 @@ public class User extends Controller{
 					.where()
 						.eq("id",id)
 					.findUnique();
+			if(thisUser != null){
+				return ok(views.html.user.render("This is your user page",thisUser));
+			}
 			
-			return ok(views.html.user.render("This is your user page",thisUser));
+			else {
+				return ok(index.render("User does not exist."));
+			}
+			
+			
 		}
 		else {
 			return unauthorized("You have to be signed in to see this page.");
