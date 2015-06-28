@@ -72,7 +72,7 @@ public class User extends Controller{
 						.eq("id",id)
 					.findUnique();
 			
-			return ok(user.render("This is your user page"));
+			return ok(views.html.user.render("This is your user page",thisUser));
 		}
 		else {
 			return unauthorized("You have to be signed in to see this page.");

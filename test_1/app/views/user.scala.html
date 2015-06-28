@@ -1,7 +1,9 @@
-@(message: String)
+@(message: String, user:UserModel)
 
 @main(message) {
 	<script type="text/javascript" src='@routes.Assets.at("js/user.js")'></script>	
+	
+	<h1>@user.username  Userpage</h1>
 	
 	<div id=comments>
 		<ul class=commentsList></ul>

@@ -53,7 +53,7 @@ public class Application extends Controller {
 			comment.save();
 			return redirect(routes.User.show(id));
 		}
-		return null;
+		return noContent();
 	}
     
     public static Result getComments(){
@@ -63,7 +63,6 @@ public class Application extends Controller {
 			.where()
 			.eq("author.id",userId)
 		.findList();
-//		List<CommentModel> comments = Ebean.find(CommentModel.class).findList();
 		return ok(toJson(comments));	
     }
     
@@ -75,6 +74,7 @@ public class Application extends Controller {
     public static Result usersList(){
     	return ok(views.html.userListing.render());
     }
+
     
     public static void testUser(){
     	if(loggedUser == null){
