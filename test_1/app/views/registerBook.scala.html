@@ -1,0 +1,22 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Add a new book.</title>
+<link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.css"))'>
+</head>
+<body>
+	<div class="container">
+		<form action="" method="post">
+			<div>Title</div>
+			<input type="text" name="title"/>
+			<div>ISBN</div>
+			<input type="password" name="ISBN" />
+			<button class="btn btn-primary">Submit</button>
+		</form>
+		<a href=@routes.Application.index>Back</a>
+	</div>
+</body>
+</html>
