@@ -1,0 +1,21 @@
+@(message: String)
+
+@main("Book Page") {
+	<script type="text/javascript" src='@routes.Assets.at("js/user.js")'></script>	
+	
+	<h1>@message</h1>
+	
+	<div id=comments>
+		<ul class=commentsList></ul>
+	</div>
+	
+	<h3>Post a comment</h3>
+	
+	<form action="@routes.Application.postComment()" method="post">
+		<label for="comment" class=required>Your comment</label>
+		 <textarea rows="2" name="content"></textarea>
+		 <br/>
+		 <button class="btn btn-primary">Comment</button>
+	</form>
+	<a href="@routes.Application.index()">Back</a>
+}

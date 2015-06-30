@@ -8,12 +8,14 @@
 <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.css"))'>
 </head>
 <body>
+	
 	<div class="container">
-		<form action="" method="post">
+	<h1>Add a new book.</h1>
+		<form action="@routes.Book.addBook()" method="post">
 			<div>Title</div>
 			<input type="text" name="title"/>
 			<div>ISBN</div>
-			<input type="password" name="ISBN" />
+			<input type="text" name="ISBN"/>
 			<button class="btn btn-primary">Submit</button>
 		</form>
 		<a href=@routes.Application.index>Back</a>

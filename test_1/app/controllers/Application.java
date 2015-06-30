@@ -39,7 +39,6 @@ public class Application extends Controller {
     	
 		CommentModel comment = Form.form(CommentModel.class).bindFromRequest().get();
 		comment.postedAt = new Date();
-	
 
 		String id = session("signedId");
 		
@@ -50,6 +49,18 @@ public class Application extends Controller {
 		comment.author = savedUser;
 		
 		if(!comment.content.isEmpty()){
+			Ebean.find(CommentModel.class)
+				.where()
+					.eq("id", 1)
+				.findList();
+			if(false){
+				
+			}
+			
+			else{
+				
+			}
+			
 			comment.save();
 			return redirect(routes.User.show(id));
 		}
@@ -75,7 +86,6 @@ public class Application extends Controller {
     	return ok(views.html.userListing.render());
     }
 
-    
     public static void testUser(){
     	if(loggedUser == null){
     		Logger.debug("user is null");

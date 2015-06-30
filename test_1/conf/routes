@@ -19,6 +19,10 @@ GET		/user/:id					controllers.User.show(id: String)
 GET		/usersList					controllers.Application.usersList()
 
 GET		/addBook					controllers.Book.registerPage()
+GET		/book/:id					controllers.Book.showBook(id: String)
+POST	/registerBook				controllers.Book.addBook()
+GET		/books						controllers.Book.getBooks()
+
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
