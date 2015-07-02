@@ -53,12 +53,13 @@ public class Book extends Controller{
 				return ok(index.render("This book does not exist."));
 			}
 			
-			
 		}
 		else {
 			return unauthorized("You have to be signed in to see this page.");
 		}
 	}
 	
-	
+	public static Result listBooks(){
+		return ok(bookListing.render());
+	}
 }
