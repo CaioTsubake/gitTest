@@ -36,7 +36,7 @@ public class User extends Controller{
 		// If there is a user with that username on the database.
 		if(user != null){
 			// Check if the password is the correct one
-			if(formUser.password.equals(user.password)){
+			if(PasswordChecker.check(user, formUser.password)){
 				session("signed",user.username);
 				session("signedId",user.id);
 				Application.loggedUser = user;
