@@ -15,6 +15,8 @@ import play.data.Form;
 import play.db.ebean.Model;
 import play.mvc.Controller;
 import play.mvc.Result;
+import views.html.*;
+
 
 
 public class Application extends Controller {
@@ -33,6 +35,10 @@ public class Application extends Controller {
     	loggedUser = null;
     	session().clear();
     	 return redirect(routes.Application.index());
+    }
+    
+    public static Result tradeHistory(){
+    	return ok(tradeHistory.render("Trade"));
     }
     
     public static Result postComment(){

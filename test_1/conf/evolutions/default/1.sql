@@ -18,6 +18,10 @@ create table comment_model (
   constraint pk_comment_model primary key (id))
 ;
 
+create table trade_model (
+  time_of_trade             timestamp)
+;
+
 create table trade_record_model (
   time_of_trade             timestamp)
 ;
@@ -48,6 +52,8 @@ SET REFERENTIAL_INTEGRITY FALSE;
 drop table if exists book_model;
 
 drop table if exists comment_model;
+
+drop table if exists trade_model;
 
 drop table if exists trade_record_model;
 

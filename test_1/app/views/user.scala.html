@@ -13,9 +13,12 @@
 	
 	<form action="@routes.Application.postComment()" method="post">
 		<label for="comment" class=required>Your comment</label>
-		 <textarea rows="2" name="content"></textarea>
-		 <br/>
-		 <button class="btn btn-primary">Comment</button>
+		<br/>
+		<textarea rows="2" name="content"></textarea>
+		<br/>
+		<button class="btn btn-primary">Comment</button>
 	</form>
-	<a href="@routes.Application.index()">Back</a>
+	<a href="@routes.Application.index()">Back</a><br/>
+	<a href="@routes.Application.tradeHistory()">My trade history</a>
+	
 }
