@@ -1,4 +1,4 @@
-@(message: String)
+@(message: String, book: BookModel)
 
 @main("Book Page") {
 	<script type="text/javascript" src='@routes.Assets.at("js/book.js")'></script>	
@@ -10,9 +10,11 @@
 	</div>
 	
 	<h3>Post a comment</h3>
+	<br/>
 	
-	<form action="@routes.Application.postComment()" method="post">
+	<form action="@routes.BookComment.postBookComment(book.id.toInt)" method="post">
 		<label for="comment" class=required>Your comment</label>
+		<br/>
 		 <textarea rows="2" name="content"></textarea>
 		 <br/>
 		 <button class="btn btn-primary">Comment</button>

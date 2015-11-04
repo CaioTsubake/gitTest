@@ -3,6 +3,15 @@
 
 # --- !Ups
 
+create table book_comment_model (
+  id                        varchar(255) not null,
+  author_id                 varchar(255),
+  posted_at                 timestamp,
+  content                   varchar(255),
+  book_page_id              integer,
+  constraint pk_book_comment_model primary key (id))
+;
+
 create table book_model (
   id                        varchar(255) not null,
   title                     varchar(255),
@@ -43,6 +52,8 @@ create table user_model (
   constraint pk_user_model primary key (id))
 ;
 
+create sequence book_comment_model_seq;
+
 create sequence book_model_seq;
 
 create sequence comment_model_seq;
@@ -51,16 +62,20 @@ create sequence user_comment_model_seq;
 
 create sequence user_model_seq;
 
-alter table comment_model add constraint fk_comment_model_author_1 foreign key (author_id) references user_model (id) on delete restrict on update restrict;
-create index ix_comment_model_author_1 on comment_model (author_id);
-alter table user_comment_model add constraint fk_user_comment_model_author_2 foreign key (author_id) references user_model (id) on delete restrict on update restrict;
-create index ix_user_comment_model_author_2 on user_comment_model (author_id);
+alter table book_comment_model add constraint fk_book_comment_model_author_1 foreign key (author_id) references user_model (id) on delete restrict on update restrict;
+create index ix_book_comment_model_author_1 on book_comment_model (author_id);
+alter table comment_model add constraint fk_comment_model_author_2 foreign key (author_id) references user_model (id) on delete restrict on update restrict;
+create index ix_comment_model_author_2 on comment_model (author_id);
+alter table user_comment_model add constraint fk_user_comment_model_author_3 foreign key (author_id) references user_model (id) on delete restrict on update restrict;
+create index ix_user_comment_model_author_3 on user_comment_model (author_id);
 
 
 
 # --- !Downs
 
 SET REFERENTIAL_INTEGRITY FALSE;
+
+drop table if exists book_comment_model;
 
 drop table if exists book_model;
 
@@ -75,6 +90,8 @@ drop table if exists user_comment_model;
 drop table if exists user_model;
 
 SET REFERENTIAL_INTEGRITY TRUE;
+
+drop sequence if exists book_comment_model_seq;
 
 drop sequence if exists book_model_seq;
 

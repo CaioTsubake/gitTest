@@ -64,7 +64,7 @@ public class Book extends Controller{
 						.eq("id", id)
 					.findUnique();
 			if(currentBook != null){
-				return ok(views.html.book.render("This is the page for " + currentBook.title));
+				return ok(views.html.book.render("This is the page for " + currentBook.title,currentBook));
 			}
 			
 			else {

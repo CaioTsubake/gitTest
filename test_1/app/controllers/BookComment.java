@@ -7,34 +7,29 @@ import java.util.List;
 
 import com.avaje.ebean.Ebean;
 
-import models.UserCommentModel;
+import models.BookCommentModel;
 import models.UserModel;
-import play.Logger;
 import play.data.Form;
 import play.mvc.Result;
 import play.mvc.Controller;
-import views.html.helper.form;
 
-
-public class UserComment extends Controller{
-
-	public static Result getUserComments(int id) {
+public class BookComment extends Controller{
+	
+	public static Result getBookComments(int bookPageId){
 		
-		List<UserCommentModel> comments = Ebean.find(UserCommentModel.class)
+		List<BookCommentModel> comments = Ebean.find(BookCommentModel.class)
 			.where()
-			.eq("userPageId", id)
+			.eq("bookPageId", bookPageId)
 		.findList();
 		return ok(toJson(comments));
-		    
 	}
 	
-	public static Result postUserComment(int userPageId) {
-		UserCommentModel comment = Form.form(UserCommentModel.class).bindFromRequest().get();
+	public static Result postBookComment(int bookPageId){
+		BookCommentModel comment = Form.form(BookCommentModel.class).bindFromRequest().get();
 		comment.postedAt = new Date();
-		comment.userPageId = userPageId;
+		comment.bookPageId = bookPageId;
 		
 		String id = session("signedId");
-		
 		UserModel savedUser = Ebean.find(UserModel.class)
 			.where()
 			.eq("id",id)
@@ -47,16 +42,18 @@ public class UserComment extends Controller{
 		}
 		
 		else {
-			Ebean.find(UserCommentModel.class)
+			Ebean.find(BookCommentModel.class)
 				.where()
-				.eq("id", userPageId)
+				.eq("id", bookPageId)
 			.findList();
 			
-			String pageId = Integer.toString(userPageId);
+			String pageId = Integer.toString(bookPageId);
 			
 			comment.save();
-			return redirect(routes.User.show(pageId));	
+			return redirect(routes.Book.showBook(pageId));
 		}
 		
+		
 	}
+
 }

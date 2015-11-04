@@ -1,13 +1,14 @@
 package models;
 
+import javax.persistence.Entity;
+
 import play.db.ebean.Model;
 
+@Entity
 public class BookCommentModel extends CommentModel {
 	
-	BookModel fromBook;
+	public int bookPageId;
 
-	public BookCommentModel(UserModel author, String content) {
-		super(author, content);
-	}
+	
 
 }
