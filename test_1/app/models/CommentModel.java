@@ -17,6 +17,18 @@ public class CommentModel extends Model {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	public CommentModel() {
+		
+	}
+	
+	public CommentModel(UserModel author, String content){
+		this.author = author;
+		this.content = content;
+		this.postedAt = new Date();
+		this.replies = new ArrayList<CommentModel>();
+	}
+
+	
 	@Id
 	public String id;
 	@ManyToOne
@@ -29,11 +41,5 @@ public class CommentModel extends Model {
 	
 	public ArrayList<CommentModel> replies;
 	
-	public CommentModel(UserModel author, String content){
-		this.author = author;
-		this.content = content;
-		this.postedAt = new Date();
-		this.replies = new ArrayList<CommentModel>();
-	}
-
+	
 }

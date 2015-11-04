@@ -12,7 +12,6 @@ import models.CommentModel;
 import models.UserModel;
 import play.Logger;
 import play.data.Form;
-import play.db.ebean.Model;
 import play.mvc.Controller;
 import play.mvc.Result;
 import views.html.*;
@@ -43,10 +42,12 @@ public class Application extends Controller {
     
     public static Result postComment(){
     	
+    	
 		CommentModel comment = Form.form(CommentModel.class).bindFromRequest().get();
 		comment.postedAt = new Date();
 
-		String id = session("signedId");
+		String id = session("signedId"); 
+		
 		
 		UserModel savedUser = Ebean.find(UserModel.class)
 				.where()
@@ -59,13 +60,6 @@ public class Application extends Controller {
 				.where()
 					.eq("id", 1)
 				.findList();
-			if(false){
-				
-			}
-			
-			else{
-				
-			}
 			
 			comment.save();
 			return redirect(routes.User.show(id));

@@ -8,8 +8,10 @@ GET		/userpage					controllers.Application.relay()
 GET		/history					controllers.Application.tradeHistory()
 
 POST	/postComment				controllers.Application.postComment()
-GET		/comments					controllers.Application.getComments()
 
+GET		/comments/:id				controllers.UserComment.getUserComments(id: Integer)
+POST	/userComment/:id			controllers.UserComment.postUserComment(id: Integer)				
+GET		/comments					controllers.Application.getComments()
 
 GET		/signIn						controllers.User.index()
 GET		/register					controllers.User.reg()
