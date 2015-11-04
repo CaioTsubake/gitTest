@@ -11,9 +11,6 @@
 	
 	<h3>Post a comment</h3>
 	
-	<script type="text/javascript">r
-		console.log(@user.id)
-	</script>
 	
 	<form action="@routes.UserComment.postUserComment(user.id.toInt)" method="post">
 		<label for="comment" class=required>Your comment</label>

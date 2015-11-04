@@ -4,6 +4,8 @@ import static play.libs.Json.toJson;
 
 import java.util.List;
 
+import javax.swing.JOptionPane;
+
 import com.avaje.ebean.Ebean;
 
 import models.BookModel;
@@ -22,9 +24,25 @@ public class Book extends Controller{
 	
 	public static Result addBook() {
 		BookModel newBook =  Form.form(BookModel.class).bindFromRequest().get();
-		newBook.save();
-		return ok();
+		BookModel copy = Ebean.find(BookModel.class)
+			.where()
+			.eq("title", newBook.title)
+		.findUnique();
 		
+		if(copy != null){
+			return noContent();
+		}
+		
+		else {
+			
+			if(newBook.title.isEmpty()){
+				return noContent();
+			}
+			else {
+				newBook.save();
+				return ok(bookListing.render());
+			}
+		}
 	}
 	
 	public static Result getBooks() {
