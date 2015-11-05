@@ -5,6 +5,7 @@ name := """test_1"""
 version := "1.0-SNAPSHOT"
 
 libraryDependencies += javaJdbc
+
 libraryDependencies += jdbc
 
 
