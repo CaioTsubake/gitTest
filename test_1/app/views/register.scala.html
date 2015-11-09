@@ -1,14 +1,7 @@
 
 
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Register User</title>
-<link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("bootstrap.min.css"))'>
-</head>
-<body>
+@main("Register User"){
 	<div class="container">
 		<form action="@routes.User.addUser()" method="post">
 			<div>Username</div>
@@ -21,5 +14,4 @@
 		</form>
 		<a href=@routes.Application.index>Back</a>
 	</div>
-</body>
-</html>
+}
