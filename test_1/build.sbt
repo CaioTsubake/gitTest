@@ -8,7 +8,7 @@ libraryDependencies += javaJdbc
 
 libraryDependencies += jdbc
 
-libraryDependencies += "mysql" % "mysql-connector-java" % "5.1.37",
+libraryDependencies += "mysql" % "mysql-connector-java" % "5.1.37"
 
 
 libraryDependencies ++= Seq(
