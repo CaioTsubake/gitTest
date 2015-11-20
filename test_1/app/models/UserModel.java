@@ -23,4 +23,6 @@ public class UserModel extends Model  {
 	public String repeatPassword;
 	
 	public List<CommentModel> userComments;
+	
+	public List<UserModel> userFollowers;
 }
