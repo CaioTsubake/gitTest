@@ -25,6 +25,10 @@ public class User extends Controller{
 		return ok(register.render());
 	}
 	
+	public static Result followingList(){
+		return ok(followingList.render("Following List"));
+	}
+	
 	public static Result login() {
 		UserModel formUser = Form.form(UserModel.class).bindFromRequest().get();
 		
@@ -86,6 +90,8 @@ public class User extends Controller{
 		}
 	}
 	
-	
+	public static Result getSignedUser(){
+		return ok();
+	}
 	
 }

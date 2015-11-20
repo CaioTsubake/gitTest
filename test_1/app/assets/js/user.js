@@ -6,6 +6,7 @@ $(document).ready(function() {
 	
 	
 	getComments();
+	hideFollowButton();
 	
 	function getComments() {
 		var url = window.location.href;
@@ -18,6 +19,14 @@ $(document).ready(function() {
 				$(".commentsList").append(item);
 			})
 		})
+	}
+	
+	function hideFollowButton(){
+		var isOwnUser = true;
+		
+		if (isOwnUser === true){
+			$("#followBtn").hide();
+		}
 	}
 	
 
