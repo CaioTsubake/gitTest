@@ -9,14 +9,14 @@ create table book_comment_model (
   posted_at                 timestamp,
   content                   varchar(255),
   book_page_id              integer,
-  constraint pk_book_comment_model AUTO_INCREMENT primary key (id))
+  constraint pk_book_comment_model primary key (id))
 ;
 
 create table book_model (
   id                        varchar(255) not null,
   title                     varchar(255),
   isbn                      varchar(255),
-  constraint pk_book_model AUTO_INCREMENT primary key (id))
+  constraint pk_book_model primary key (id))
 ;
 
 create table comment_model (
@@ -24,7 +24,7 @@ create table comment_model (
   author_id                 varchar(255),
   posted_at                 timestamp,
   content                   varchar(255),
-  constraint pk_comment_model AUTO_INCREMENT primary key (id))
+  constraint pk_comment_model primary key (id))
 ;
 
 create table trade_model (
@@ -41,7 +41,7 @@ create table user_comment_model (
   posted_at                 timestamp,
   content                   varchar(255),
   user_page_id              integer,
-  constraint pk_user_comment_model AUTO_INCREMENT  primary key (id))
+  constraint pk_user_comment_model primary key (id))
 ;
 
 create table user_model (
@@ -49,10 +49,17 @@ create table user_model (
   username                  varchar(255),
   password                  varchar(255),
   repeat_password           varchar(255),
-  constraint pk_user_model AUTO_INCREMENT primary key (id))
+  constraint pk_user_model primary key (id))
 ;
 
 
+alter table book_comment_model modify pk_book_comment_model integer AUTO_INCREMENT primary key;
+
+alter table book_model modify pk_book_model integer AUTO_INCREMENT primary key;
+
+alter table comment_model modify pk_comment_model integer AUTO_INCREMENT primary key;
+
+alter table user_model modify pk_user_comment_model integer AUTO_INCREMENT primary key;
 
 
 
