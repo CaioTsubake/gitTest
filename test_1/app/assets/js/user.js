@@ -6,7 +6,7 @@ $(document).ready(function() {
 	
 	
 	getComments();
-	hideFollowButton();
+	
 	
 	function getComments() {
 		var url = window.location.href;
@@ -21,13 +21,8 @@ $(document).ready(function() {
 		})
 	}
 	
-	function hideFollowButton(){
-		var isOwnUser = true;
-		
-		if (isOwnUser === true){
-			$("#followBtn").hide();
-		}
-	}
+	
+	
 	
 
 })

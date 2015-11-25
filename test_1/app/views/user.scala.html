@@ -6,13 +6,20 @@
 	<h1>@user.username  Userpage</h1>	
 	<button class="btn btn-primary" id="followBtn">Follow</button>
 	
+	<script type="text/javascript">
+		var id = @session.get("signedId");
+		
+		if(@user.id === id){
+			$("#followBtn").hide();
+		}
+		
+	</script>
+	
 	<div id=comments>
 		<ul class=commentsList></ul>
 	</div>
 	
-	<h3>Post a comment</h3>
-	
-	
+	<h3>Post a comment</h3>	
 	<form action="@routes.UserComment.postUserComment(user.id.toInt)" method="post">
 		<label for="comment" class=required>Your comment</label>
 		<br/>

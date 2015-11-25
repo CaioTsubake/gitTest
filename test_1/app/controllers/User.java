@@ -94,4 +94,25 @@ public class User extends Controller{
 		return ok();
 	}
 	
+	public static Result addFollower(UserModel pageUser){
+		
+		String id = session("signedId");
+		
+		UserModel signedUser = Ebean.find(UserModel.class)
+				.where()
+					.eq("id",id)
+				.findUnique();
+		
+		signedUser.userFollowers.add(pageUser);
+		
+	
+		
+		return ok();
+	}
+	
+	public static Result getFollower(UserModel pageUser){
+		
+		return ok(toJson(pageUser.userFollowers));
+	}
+	
 }
