@@ -94,7 +94,7 @@ public class User extends Controller{
 		return ok();
 	}
 	
-	public static Result addFollower(UserModel pageUser){
+	public static Result addFollower(String pageUserId){
 		
 		String id = session("signedId");
 		
@@ -103,11 +103,16 @@ public class User extends Controller{
 					.eq("id",id)
 				.findUnique();
 		
+		UserModel pageUser = Ebean.find(UserModel.class)
+				.where()
+					.eq("id", pageUserId)
+				.findUnique();
+		Logger.debug(signedUser.username);
+		Logger.debug(pageUser.username);
+		
 		signedUser.userFollowers.add(pageUser);
 		
-	
-		
-		return ok();
+		return redirect(routes.User.show(pageUserId));
 	}
 	
 	public static Result getFollower(UserModel pageUser){

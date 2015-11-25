@@ -3,8 +3,11 @@
 @main(message) {
 	<script type="text/javascript" src='@routes.Assets.at("js/user.js")'></script>	
 	
-	<h1>@user.username  Userpage</h1>	
-	<button class="btn btn-primary" id="followBtn">Follow</button>
+	<h1>@user.username  Userpage</h1>
+	<form action="@routes.User.addFollower(user.id)" method="post">
+		<button class="btn btn-primary" id="followBtn">Follow</button>
+	</form>	
+	
 	
 	<script type="text/javascript">
 		var id = @session.get("signedId");

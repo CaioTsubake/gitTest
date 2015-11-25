@@ -1,5 +1,6 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -24,7 +25,7 @@ public class UserModel extends Model  {
 	
 	public List<CommentModel> userComments;
 	
-	public List<UserModel> userFollowers;
+	public List<UserModel> userFollowers = new ArrayList<UserModel>();
 	
 	
 	
