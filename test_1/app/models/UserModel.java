@@ -25,4 +25,7 @@ public class UserModel extends Model  {
 	public List<CommentModel> userComments;
 	
 	public List<UserModel> userFollowers;
+	
+	
+	
 }
