@@ -42,12 +42,15 @@ public class BookComment extends Controller{
 		}
 		
 		else {
-			Ebean.find(BookCommentModel.class)
-				.where()
-				.eq("id", bookPageId)
-			.findList();
 			
 			String pageId = Integer.toString(bookPageId);
+			
+			Ebean.find(BookCommentModel.class)
+				.where()
+				.eq("id", pageId)
+			.findList();
+			
+			
 			
 			comment.save();
 			return redirect(routes.Book.showBook(pageId));
