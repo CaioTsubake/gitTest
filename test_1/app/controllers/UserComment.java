@@ -47,12 +47,14 @@ public class UserComment extends Controller{
 		}
 		
 		else {
+			String pageId = Integer.toString(userPageId);
+			
 			Ebean.find(UserCommentModel.class)
 				.where()
-				.eq("id", userPageId)
+				.eq("id", pageId)
 			.findList();
 			
-			String pageId = Integer.toString(userPageId);
+			
 			
 			comment.save();
 			return redirect(routes.User.show(pageId));	
