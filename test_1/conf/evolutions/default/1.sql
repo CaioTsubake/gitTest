@@ -39,7 +39,7 @@ create table trade_model (
 ;
 
 create table trade_record_model (
-  sender_id                 integer not null,
+  sender_id                 varchar(255) not null,
   time_of_trade             timestamp,
   constraint pk_trade_record_model primary key (sender_id))
 ;

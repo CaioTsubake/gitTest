@@ -14,7 +14,7 @@ public class TradeRecordModel extends Model {
 
 	//Participants
 	@Id
-	int  senderId;
+	public String  senderId;
 	UserModel receiver;
 	
 	//Books Traded
