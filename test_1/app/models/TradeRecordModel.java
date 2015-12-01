@@ -3,6 +3,7 @@ package models;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 import play.db.ebean.Model;
 
@@ -12,7 +13,8 @@ public class TradeRecordModel extends Model {
 	private static final long serialVersionUID = 1L;
 
 	//Participants
-	UserModel sender;
+	@Id
+	int  senderId;
 	UserModel receiver;
 	
 	//Books Traded
