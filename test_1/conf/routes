@@ -22,8 +22,11 @@ GET		/login						controllers.User.login()
 GET		/user/:id					controllers.User.show(id: String)
 GET		/usersList					controllers.Application.usersList()
 
-GET		/following					controllers.User.followingList()
+GET		/following					controllers.User.followingList(id)
 POST	/addFollow					controllers.User.addFollower(user)
+
+GET		/getTrades					controllers.TradeRecord.getTrades()
+POST	/registerTrade				controllers.TradeRecord.registerTrade()
 
 GET		/addBook					controllers.Book.registerPage()
 GET		/book/:id					controllers.Book.showBook(id: String)

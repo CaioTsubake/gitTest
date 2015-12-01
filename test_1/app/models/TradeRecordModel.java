@@ -10,18 +10,19 @@ import play.db.ebean.Model;
 @Entity
 public class TradeRecordModel extends Model {
 
-	private static final long serialVersionUID = 1L;
-
+	
 	//Participants
 	@Id
-	public String  senderId;
-	UserModel receiver;
+	public String id;
+	
+	public String senderId;
+	public String receiver;
 	
 	//Books Traded
-	BookModel bookSent;
-	BookModel bookReceived;
+	public String bookSent;
+	public String bookReceived;
 	
 	//Time of the trade
-	Date timeOfTrade;
+	public Date timeOfTrade;
 	
 }

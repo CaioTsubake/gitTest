@@ -37,7 +37,8 @@ public class Application extends Controller {
     }
     
     public static Result tradeHistory(){
-    	return ok(tradeHistory.render("Trade"));
+    	String id = session("signedId");
+    	return ok(tradeHistory.render(id));
     }
     
     public static Result postComment(){

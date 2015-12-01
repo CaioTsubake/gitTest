@@ -1,4 +1,4 @@
-@(message: String)
+@(signedId: String)
 
 @main("Trade History") {
 
@@ -6,9 +6,23 @@
         <h1>Trade History</h1>
     </div>
     <script type="text/javascript">
-		
+		$(document).ready(function() {
+			$.get("@routes.TradeRecord.getTrades()", function(results) {
+				$.each(results, function(index, result) {
+					var dateNum = result.timeOfTrade;
+					myDate = new Date(dateNum);
+					var item = $("<li>Borrower: " + result.receiver + "<br/>" +
+				  					"Book sent: " + result.bookSent + "<br/>" +
+				  					"Book received: " + result.bookReceived + "<br/>" +
+				  					"Date of trade: " + myDate.toDateString() + "<br/>" +
+				  				"<li/>");
+					$("#tradesList").append(item);
+				});
+			});
+		});
 	</script>
-	<form>
+	<form action="@routes.TradeRecord.registerTrade()" method="post">
+		<input type="hidden" name="senderId" value=@signedId>
 		<label>Borrower</label>
 		<input type="text" name="receiver"/><br/>
 		<label>Book Sent</label>
@@ -16,10 +30,13 @@
 		<label>Book Borrowed</label>
 		<input type="text" name="bookReceived"/><br/>
 		<label>Date</label>
-		<input type="date" name="timeOfTrade"/><br/>
-		<button type="button" id="register">Register New Trade</button>
+		<input type="date" name="timeOfTrade"/><br/><br/>
+		<button class="btn btn-primary" id="register">Register New Trade</button>
 	</form>
 	
 	<hr>
+	
+	<ul id="tradesList"></ul>
+
 
 }

@@ -39,9 +39,13 @@ create table trade_model (
 ;
 
 create table trade_record_model (
-  sender_id                 varchar(255) not null,
+  id                        varchar(255) not null,
+  sender_id                 varchar(255),
+  receiver                  varchar(255),
+  book_sent                 varchar(255),
+  book_received             varchar(255),
   time_of_trade             timestamp,
-  constraint pk_trade_record_model primary key (sender_id))
+  constraint pk_trade_record_model primary key (id))
 ;
 
 create table user_comment_model (
