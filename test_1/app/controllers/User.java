@@ -1,10 +1,12 @@
 package controllers;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.avaje.ebean.Ebean;
 
+import models.FollowingListModel;
 import models.UserModel;
 import play.Logger;
 import play.data.Form;
@@ -25,8 +27,14 @@ public class User extends Controller{
 		return ok(register.render());
 	}
 	
-	public static Result followingList(){
-		return ok(followingList.render("Following List"));
+	public static Result followingList(String id){
+		
+		UserModel thisUser = Ebean.find(UserModel.class)
+			.where()
+				.eq("id",id)
+			.findUnique();
+		
+		return ok(followingList.render("Following List",thisUser));
 	}
 	
 	public static Result login() {
@@ -110,14 +118,24 @@ public class User extends Controller{
 		Logger.debug(signedUser.username);
 		Logger.debug(pageUser.username);
 		
-		signedUser.userFollowers.add(pageUser);
+		FollowingListModel followList = signedUser.userFollowingList;
+		followList = new FollowingListModel();
+		signedUser.userFollowing =  new ArrayList<FollowingListModel>();
+		signedUser.userFollowing.add(followList);
+		followList.followingList.add(pageUser);
 		
-		return redirect(routes.User.show(pageUserId));
+		followList.save();
+		signedUser.save();
+			
+			
+			return redirect(routes.User.show(pageUserId));
+		
+		
 	}
 	
 	public static Result getFollower(UserModel pageUser){
 		
-		return ok(toJson(pageUser.userFollowers));
+		return ok(toJson(pageUser));
 	}
 	
 }
