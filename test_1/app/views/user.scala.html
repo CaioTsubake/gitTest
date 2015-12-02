@@ -16,6 +16,7 @@
 			$("#followBtn").hide();
 		}
 		
+		
 	</script>
 	
 	<div id=comments>
@@ -30,8 +31,9 @@
 		<br/>
 		<button class="btn btn-primary">Comment</button>
 	</form>
-	<a href="@routes.Application.index()">Back</a><br/>
 	<a href="@routes.Application.tradeHistory()">My trade history</a><br/>
-	<a href="@routes.User.followingList()">Following</a>
+	<a href="@routes.User.followingList(user.id)">Following</a>
+	<a href="@routes.Application.index()">Back</a><br/>
+	
 	
 }
