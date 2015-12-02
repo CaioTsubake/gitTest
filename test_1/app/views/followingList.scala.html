@@ -1,10 +1,23 @@
-@(message: String)
+@(message: String, user: models.UserModel)
 
 @main("Following") {
 
     <div class="well">
         <h1>Following</h1>
     </div>
-    
+    @user.username
+   	@user.userFollowingList
+   	@user.userFollowing
+    <script type="text/javascript">
+		$(document).ready(function(){
+			var pageUser = "@user.userFollowingList";
+			console.log(pageUser)
+			console.log("@user.userFollowing")
+		})
+	</script>
+
+	<div id="followers">
+		<ul id="followersList"></ul>
+	</div>    
 
 }
