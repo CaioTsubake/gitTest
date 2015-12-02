@@ -13,7 +13,5 @@ public class FollowingListModel extends Model{
 	@Id
 	public int id;
 	
-	@ManyToMany
-	@JoinTable(name="followingList_following")
-	public List<UserModel> followingList = new ArrayList<UserModel>(); 
+	
 }

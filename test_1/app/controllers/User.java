@@ -122,7 +122,7 @@ public class User extends Controller{
 		followList = new FollowingListModel();
 		signedUser.userFollowing =  new ArrayList<FollowingListModel>();
 		signedUser.userFollowing.add(followList);
-		followList.followingList.add(pageUser);
+		
 		
 		followList.save();
 		signedUser.save();
