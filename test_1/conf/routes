@@ -24,6 +24,7 @@ GET		/usersList					controllers.Application.usersList()
 
 GET		/following					controllers.User.followingList(id)
 POST	/addFollow					controllers.User.addFollower(user)
+GET		/followList/:id				controllers.User.getFollower(id)
 
 GET		/getTrades					controllers.TradeRecord.getTrades()
 POST	/registerTrade				controllers.TradeRecord.registerTrade()

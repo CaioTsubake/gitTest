@@ -5,6 +5,18 @@
     <div class="well">
         <h1>Following</h1>
     </div>
-   
+   	<script type="text/javascript">
+   	$(document).ready(function() {
+		$.get("@routes.User.getFollower(user.id)", function(results) {
+			$.each(results, function(index, result) {
+				var route = "/user/" + result.userId
+				$(".listing").append("<li><a>" + result.username + "</a></li>");
+				$("a:not([href])").attr("href", route);
+			});
+		});
+	});
+	</script>
+
+	<ul class="listing"></ul>
 
 }

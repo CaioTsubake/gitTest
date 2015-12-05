@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.avaje.ebean.Ebean;
 
+import models.FolloweeModel;
 import models.FollowingListModel;
 import models.UserModel;
 import play.Logger;
@@ -115,27 +116,33 @@ public class User extends Controller{
 				.where()
 					.eq("id", pageUserId)
 				.findUnique();
-		Logger.debug(signedUser.username);
-		Logger.debug(pageUser.username);
 		
-		FollowingListModel followList = signedUser.userFollowingList;
-		followList = new FollowingListModel();
-		signedUser.userFollowing =  new ArrayList<FollowingListModel>();
-		signedUser.userFollowing.add(followList);
+		// Save a new Followee with the page user's info and signed user ownerId
 		
+		FolloweeModel following = new FolloweeModel();
+		following.ownerId = signedUser.id;
+		following.username = pageUser.username;
+		following.userId = pageUser.id;
+		following.save();
 		
-		followList.save();
-		signedUser.save();
-			
-			
-			return redirect(routes.User.show(pageUserId));
+		return redirect(routes.User.show(pageUserId));
 		
 		
 	}
 	
-	public static Result getFollower(UserModel pageUser){
+	public static Result getFollower(String pageUserId){
+		UserModel pageUser = Ebean.find(UserModel.class)
+				.where()
+					.eq("id", pageUserId)
+				.findUnique();
+		// Find a list of all the followee that have this owner ID
 		
-		return ok(toJson(pageUser));
+		List<FolloweeModel> following = Ebean.find(FolloweeModel.class)
+			.where()
+				.eq("ownerId", pageUserId)
+			.findList();
+		
+		return ok(toJson(following));
 	}
 	
 }

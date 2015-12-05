@@ -25,13 +25,12 @@ public class UserModel extends Model  {
 	
 	public List<CommentModel> userComments;
 	
-	@OneToOne
-	public FollowingListModel userFollowingList;
 	
-	@ManyToMany
-	public List<FollowingListModel> userFollowing = new ArrayList<FollowingListModel>();
+	public List<FolloweeModel> followingList; 
 	
-	
+	public void setFollowingList(List<FolloweeModel> followingList){
+		this.followingList = followingList;
+	}
 	
 	
 	
