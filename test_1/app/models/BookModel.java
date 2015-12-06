@@ -14,6 +14,8 @@ public class BookModel extends Model {
 	
 	public String title;
 	
+	public String author;
+	
 	public String ISBN;
 	
 	public List<CommentModel> bookComments;

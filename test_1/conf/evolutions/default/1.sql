@@ -23,6 +23,7 @@ create table book_list (
 create table book_model (
   id                        varchar(255) not null,
   title                     varchar(255),
+  author                    varchar(255),
   isbn                      varchar(255),
   constraint pk_book_model primary key (id))
 ;
