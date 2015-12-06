@@ -4,6 +4,10 @@
 	<script type="text/javascript" src='@routes.Assets.at("js/book.js")'></script>	
 	
 	<h1>@message</h1>
+	<form action="@routes.User.addBook(book.id)" method="post">
+		<button class="btn btn-primary" id="followBtn">Add</button>
+	</form>	
+	
 	
 	<div id=comments>
 		<ul class=commentsList></ul>

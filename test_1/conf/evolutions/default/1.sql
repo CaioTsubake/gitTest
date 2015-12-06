@@ -12,6 +12,14 @@ create table book_comment_model (
   constraint pk_book_comment_model primary key (id))
 ;
 
+create table book_list (
+  id                        varchar(255) not null,
+  book_name                 varchar(255),
+  book_id                   varchar(255),
+  owner_id                  varchar(255),
+  constraint pk_book_list primary key (id))
+;
+
 create table book_model (
   id                        varchar(255) not null,
   title                     varchar(255),
@@ -75,6 +83,8 @@ create table user_model (
 
 create sequence book_comment_model_seq;
 
+create sequence book_list_seq;
+
 create sequence book_model_seq;
 
 create sequence comment_model_seq;
@@ -106,6 +116,8 @@ SET REFERENTIAL_INTEGRITY FALSE;
 
 drop table if exists book_comment_model;
 
+drop table if exists book_list;
+
 drop table if exists book_model;
 
 drop table if exists comment_model;
@@ -125,6 +137,8 @@ drop table if exists user_model;
 SET REFERENTIAL_INTEGRITY TRUE;
 
 drop sequence if exists book_comment_model_seq;
+
+drop sequence if exists book_list_seq;
 
 drop sequence if exists book_model_seq;
 

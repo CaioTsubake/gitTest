@@ -26,6 +26,10 @@ GET		/following					controllers.User.followingList(id)
 POST	/addFollow					controllers.User.addFollower(user)
 GET		/followList/:id				controllers.User.getFollower(id)
 
+GET		/bookLibrary				controllers.User.bookListing(id)
+POST	/addVolume					controllers.User.addBook(bookId)
+GET		/libraryList/:id			controllers.User.getBooks(id)
+
 GET		/getTrades					controllers.TradeRecord.getTrades()
 POST	/registerTrade				controllers.TradeRecord.registerTrade()
 

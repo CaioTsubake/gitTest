@@ -1,6 +1,9 @@
 <classpath>
   <classpathentry kind="src" path="app" output=".target"/>
   <classpathentry kind="src" path="test" output=".target"/>
+  <classpathentry kind="lib" path=".\lib\mysql-connector-java-5.0.8-bin.jar"/>
+  <classpathentry kind="lib" path=".\lib\mysql-connector-java-5.1.37-bin.jar"/>
+  <classpathentry kind="lib" path=".\lib\postgresql-9.4-1205.jdbc4.jar"/>
   <classpathentry path="C:\Users\Caio Tsubake\Desktop\New_Start\Workbench\test_1\target\scala-2.10\classes_managed" kind="lib"></classpathentry>
   <classpathentry kind="lib" path="C:\Users\Caio Tsubake\.ivy2\cache\com.typesafe.play\play-java-jdbc_2.10\jars\play-java-jdbc_2.10-2.2.2.jar"/>
   <classpathentry kind="lib" path="C:\Users\Caio Tsubake\.ivy2\cache\com.typesafe.play\play-jdbc_2.10\jars\play-jdbc_2.10-2.2.2.jar"/>
@@ -61,7 +64,6 @@
   <classpathentry kind="lib" path="C:\Users\Caio Tsubake\.ivy2\cache\org.avaje.ebeanorm\avaje-ebeanorm\jars\avaje-ebeanorm-3.2.2.jar"/>
   <classpathentry kind="lib" path="C:\Users\Caio Tsubake\.ivy2\cache\org.avaje.ebeanorm\avaje-ebeanorm-agent\jars\avaje-ebeanorm-agent-3.2.1.jar"/>
   <classpathentry kind="lib" path="C:\Users\Caio Tsubake\.ivy2\cache\org.hibernate.javax.persistence\hibernate-jpa-2.0-api\jars\hibernate-jpa-2.0-api-1.0.1.Final.jar"/>
-  <classpathentry kind="lib" path="C:\Users\Caio Tsubake\.ivy2\cache\mysql\mysql-connector-java\jars\mysql-connector-java-5.1.37.jar"/>
   <classpathentry kind="lib" path="C:\Users\Caio Tsubake\.ivy2\cache\org.webjars\webjars-play_2.10\jars\webjars-play_2.10-2.2.2.jar"/>
   <classpathentry kind="lib" path="C:\Users\Caio Tsubake\.ivy2\cache\org.webjars\requirejs\jars\requirejs-2.1.10.jar"/>
   <classpathentry kind="lib" path="C:\Users\Caio Tsubake\.ivy2\cache\org.webjars\webjars-locator\jars\webjars-locator-0.13.jar"/>

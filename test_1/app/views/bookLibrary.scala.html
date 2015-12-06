@@ -1,0 +1,22 @@
+@(message: String, user: models.UserModel)
+
+@main("My Library") {
+
+    <div class="well">
+        <h1>My Books</h1>
+    </div>
+   	<script type="text/javascript">
+   	$(document).ready(function() {
+		$.get("@routes.User.getBooks(user.id)", function(results) {
+			$.each(results, function(index, result) {
+				var route = "/book/" + result.bookId
+				$(".listing").append("<li><a>" + result.bookName + "</a></li>");
+				$("a:not([href])").attr("href", route);
+			});
+		}); 
+	});
+	</script>
+
+	<ul class="listing"></ul>
+
+}

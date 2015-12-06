@@ -6,6 +6,8 @@ import java.util.List;
 
 import com.avaje.ebean.Ebean;
 
+import models.BookList;
+import models.BookModel;
 import models.FolloweeModel;
 import models.FollowingListModel;
 import models.UserModel;
@@ -143,6 +145,46 @@ public class User extends Controller{
 			.findList();
 		
 		return ok(toJson(following));
+	}
+	
+	public static Result addBook(String bookId){
+		String id = session("signedId");
+		
+		UserModel signedUser = Ebean.find(UserModel.class)
+				.where()
+					.eq("id",id)
+				.findUnique();
+		
+		BookModel book = Ebean.find(BookModel.class)
+			.where()
+				.eq("id", bookId)
+			.findUnique();
+		
+		// Save a new bookList with the book information and with signed user's owner ID
+		BookList volume = new BookList();
+		volume.setbookId(book.id);
+		volume.setBookName(book.title);
+		volume.setOwnerId(signedUser.id);
+		volume.save();
+		return redirect(routes.Book.showBook(bookId));
+	}
+	
+	public static Result getBooks(String pageUserId){
+		List<BookList> listing = Ebean.find(BookList.class)
+			.where()
+				.eq("ownerId", pageUserId)
+			.findList();
+		return ok(toJson(listing));
+	}
+	
+	public static Result bookListing(String id){
+		
+		UserModel thisUser = Ebean.find(UserModel.class)
+			.where()
+				.eq("id",id)
+			.findUnique();
+		
+		return ok(bookLibrary.render("Book Library",thisUser));
 	}
 	
 }
