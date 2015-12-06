@@ -27,7 +27,7 @@ public class Application extends Controller {
 	}
 	
     public static Result index() {
-        return ok(views.html.index.render("Booksearch"));
+        return ok(views.html.index.render("BookTradeNet"));
     }
     
     public static Result logout(){

@@ -3,7 +3,7 @@
 @main(message) {
 	<script type="text/javascript" src='@routes.Assets.at("js/user.js")'></script>	
 	
-	<h1>@user.username  Userpage</h1>
+	<h1>@user.username</h1>
 	<form action="@routes.User.addFollower(user.id)" method="post">
 		<button class="btn btn-primary" id="followBtn">Follow</button>
 	</form>	
