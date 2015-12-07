@@ -2,6 +2,7 @@ package controllers;
 
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import com.avaje.ebean.Ebean;
@@ -16,6 +17,7 @@ import play.data.Form;
 import play.data.Form.Field;
 import play.db.ebean.Model;
 import play.mvc.*;
+import sun.net.RegisteredDomain;
 import views.html.*;
 import static play.libs.Json.*;
 
@@ -115,9 +117,15 @@ public class User extends Controller{
 				.findUnique();
 		
 		UserModel pageUser = Ebean.find(UserModel.class)
-				.where()
-					.eq("id", pageUserId)
-				.findUnique();
+			.where()
+				.eq("id", pageUserId)
+			.findUnique();
+
+		List<FolloweeModel> userList = Ebean.find(FolloweeModel.class)
+			.where()
+				.eq("ownerId", signedUser.id)
+			.findList();
+		
 		
 		// Save a new Followee with the page user's info and signed user ownerId
 		
@@ -125,11 +133,14 @@ public class User extends Controller{
 		following.ownerId = signedUser.id;
 		following.username = pageUser.username;
 		following.userId = pageUser.id;
+		
+		if(checkContainsUser(userList,following)){
+			return noContent();
+		}
+		
 		following.save();
 		
 		return redirect(routes.User.show(pageUserId));
-		
-		
 	}
 	
 	public static Result getFollower(String pageUserId){
@@ -160,11 +171,24 @@ public class User extends Controller{
 				.eq("id", bookId)
 			.findUnique();
 		
+		List<BookList> userList = Ebean.find(BookList.class)
+			.where()
+				.eq("ownerId", signedUser.id)
+			.findList();
+		
+		
+		
 		// Save a new bookList with the book information and with signed user's owner ID
 		BookList volume = new BookList();
 		volume.setbookId(book.id);
 		volume.setBookName(book.title);
 		volume.setOwnerId(signedUser.id);
+		
+		if(checkContainsBook(userList, volume)){
+			return noContent();
+					
+		}
+		
 		volume.save();
 		return redirect(routes.Book.showBook(bookId));
 	}
@@ -185,6 +209,48 @@ public class User extends Controller{
 			.findUnique();
 		
 		return ok(bookLibrary.render("Book Library",thisUser));
+	}
+	
+	private static boolean checkContainsUser(List<FolloweeModel> list, FolloweeModel user){
+		if(list.isEmpty()){
+			return false;
+		}
+		boolean match = false;
+		Iterator it = list.iterator();
+		
+		while(it.hasNext() && match == false){
+			FolloweeModel entry = (FolloweeModel) it.next();
+			if(entry.username.equalsIgnoreCase(user.username)){
+				match = true;
+			}
+		}
+		if(match == true ){
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	private static boolean checkContainsBook(List<BookList> list, BookList book){
+		if(list.isEmpty()){
+			return false;
+		}
+		boolean match = false;
+		Iterator it = list.iterator();
+		
+		while(it.hasNext() && match == false){
+			BookList entry = (BookList) it.next();
+			if(entry.bookName.equalsIgnoreCase(book.bookName)){
+				match = true;
+			}
+		}
+		if(match == true ){
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 	
 }
